@@ -1,0 +1,5 @@
+.env*
+node_modeules
+.next
+.git
+Dockerfile

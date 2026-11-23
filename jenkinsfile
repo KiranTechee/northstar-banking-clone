@@ -1,0 +1,30 @@
+Pipeline{
+    agent any
+
+    environment{
+
+    }
+
+    stages{
+        stage('checkout'){
+            steps{
+                git branch:'main',
+                    url:'https://github.com/KiranTechee/northstar-banking-clone.git'                
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'docker build -t northestar-banking .'
+            }
+        }
+        stage('deploy'){
+            steps{
+                script{
+                    sh """
+                        docker stop northstar-banking // true
+                    """
+                }
+            }
+        }
+    }
+}
